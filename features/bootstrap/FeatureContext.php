@@ -4,6 +4,8 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Selector\CssSelector;
+use \PHPUnit\Framework\Assert;
+use PHPUnit\Framework\TestCase; 
 
 /**
  * Defines application features from the specific context.
@@ -38,7 +40,7 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     }
 
     /**
-     * @Given /^I click on add to cart$/
+     * @Given /^I click on add to cart from wishlist$/
      */
     public function addToCartFromWishlist()
     {
