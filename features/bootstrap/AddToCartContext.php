@@ -47,8 +47,16 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     {
        $this->assertSession()->elementTextContains('xpath', "//span[@id='cart-total']",$index ." item(s)");
     }
+    
+     /**
+     * @Given /^I remove item from cart$/
+     */
+    public function removeItemFromCart()
+    {
+       $this->getSession()->getPage()->find('css',".btn-danger")->click();
+    }
 
-    /** @AfterScenario */
+    /** @AfterScenario @addtocart */
     public function after()
     {
         $elements=$this->getSession()->getPage()->findAll('css',".btn-danger");
