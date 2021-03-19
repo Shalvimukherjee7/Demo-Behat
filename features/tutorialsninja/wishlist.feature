@@ -26,5 +26,5 @@ Feature: wishlist functionality
     And I visit "?route=product/search&search=iphone"
     And I click on wishlist
     When I visit "?route=account/wishlist"
-    And I click on add to cart
+    And I click on add to cart from wishlist
     Then I should see "Success: You have added iPhone to your shopping cart!"

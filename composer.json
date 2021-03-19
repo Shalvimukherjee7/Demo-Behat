@@ -13,6 +13,7 @@
     "symfony/filesystem": "^5.2",
     "symfony/finder": "^5.2",
     "emuse/behat-html-formatter": "^0.2.0",
-    "behat/gherkin": "^4.8"
+    "behat/gherkin": "^4.8",
+    "phpunit/phpunit": "^9.5"
   }
 }
