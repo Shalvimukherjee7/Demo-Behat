@@ -4,13 +4,12 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Selector\CssSelector;
-use \PHPUnit\Framework\Assert;
-use PHPUnit\Framework\TestCase; 
+use PHPUnit\Framework\Assert;
 
 /**
  * Defines application features from the specific context.
  */
-class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
+class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 {
     /**
      * Initializes context.
@@ -30,13 +29,17 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     {
        $this->getSession()
          ->getPage()
+<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
          ->find('xpath', "//div[@id='content']/div[2]/div[$index]/div[1]/div[3]/button[1]")
+=======
+         ->find('xpath', "//div[@id='content']//div[$index]/div[1]/div[3]/button[1]")
+>>>>>>> add-to-cart:features/bootstrap/CartContext.php
          ->click();
         
     }
 
     /**
-     * @Given /^I press cart total button$/
+     * @Given /^I open cart popup$/
      */
     public function cartTotalButton()
     {
@@ -47,7 +50,7 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     }
 
     /**
-     * @Given /^I should see product count "([^"]*)"$/
+     * @Given /^I should see total "([^"]*)" products in cart popup$/
      */
     public function cartTotalCount($index)
     {
@@ -73,10 +76,20 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->getPage()
          ->findAll('css',"[title='Remove']");
       foreach($elements as $value){
+<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
        $value=$this->getSession()
          ->getPage()
          ->find('xpath',"//div[@id='cart']//tr[1]//button")
          ->click();
       }
    }
+=======
+      $value=$this->getSession()
+         ->getPage()
+         ->find('xpath',"//div[@id='cart']//tr[1]//button")
+         ->click();
+    
+        }
+    }
+>>>>>>> add-to-cart:features/bootstrap/CartContext.php
 }
