@@ -3,7 +3,7 @@ default:
     default:
       contexts:
         - FeatureContext
-        - AddToCartContext    
+        - CartContext    
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext

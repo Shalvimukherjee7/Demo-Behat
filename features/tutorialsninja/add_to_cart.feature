@@ -27,7 +27,7 @@ Feature: Add to cart functionality
   Scenario: Add one product to cart and verify popup
     Given I am on the homepage
     When I click on add to cart "1"
-    Then I should see product count "1"
+    Then I should see total "1" products in cart popup
 
   @addtocart
   Scenario: Add two products to cart and verify popup
@@ -51,3 +51,4 @@ Feature: Add to cart functionality
     When I press cart total button
     And I click "Checkout"
     Then I should see "Checkout Options" 
+    Then I should see total "2" products in cart popup
