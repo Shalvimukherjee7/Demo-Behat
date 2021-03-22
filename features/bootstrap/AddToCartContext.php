@@ -46,8 +46,7 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     public function cartTotalCount($index)
     {
       printf($this->getSession()->getPage()->find('xpath',"//span[@id='cart-total']")->getText());
-
-       $this->assertSession()->elementTextContains('xpath', "//span[@id='cart-total']",$index ." item(s)");
+      $this->assertSession()->elementTextContains('xpath', "//span[@id='cart-total']",$index ." item(s)");
     }
     
      /**
