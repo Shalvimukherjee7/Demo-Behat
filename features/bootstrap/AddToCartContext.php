@@ -45,6 +45,8 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function cartTotalCount($index)
     {
+      printf($this->getSession()->getPage()->find('xpath',"//span[@id='cart-total']")->getText());
+
        $this->assertSession()->elementTextContains('xpath', "//span[@id='cart-total']",$index ." item(s)");
     }
     
@@ -59,10 +61,10 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     /** @AfterScenario @addtocart */
     public function after()
     {
-        $elements=$this->getSession()->getPage()->findAll('css',".btn-danger");
-        foreach($elements as $value){
-        $value->click();
-    
-        }
+      $elements=$this->getSession()->getPage()->findAll('css',"[title='Remove']");
+      foreach($elements as $value){
+       $value=$this->getSession()->getPage()->find('xpath',"//div[@id='cart']//tr[1]//button")->click();
+
     }
+   }
 }
