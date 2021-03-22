@@ -26,7 +26,10 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function iClickOnWishlist()
     {
-       $this->getSession()->getPage()->find('css', '[data-original-title="Add to Wish List"]')->click();
+       $this->getSession()
+       ->getPage()
+       ->find('css', '[data-original-title="Add to Wish List"]')
+       ->click();
     }
 
     /**
@@ -34,7 +37,10 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function removeFromWishlist()
     {
-       $this->getSession()->getPage()->find('css', '[data-original-title="Remove"]')->click();
+       $this->getSession()
+       ->getPage()
+       ->find('css', '[data-original-title="Remove"]')
+       ->click();
     }
 
     /**
@@ -42,6 +48,9 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function addToCartFromWishlist()
     {
-       $this->getSession()->getPage()->find('css', '[data-original-title="Add to Cart"]')->click();
+       $this->getSession()
+       ->getPage()
+       ->find('css', '[data-original-title="Add to Cart"]')
+       ->click();
     }
 }

@@ -28,3 +28,4 @@ Feature: wishlist functionality
     When I visit "?route=account/wishlist"
     And I click on add to cart
     Then I should see "Success: You have added iPhone to your shopping cart!"
+    
