@@ -28,7 +28,10 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function addToCart($index)
     {
-       $this->getSession()->getPage()->find('xpath', "//div[@id='content']/div[2]/div[$index]/div[1]/div[3]/button[1]")->click();
+       $this->getSession()
+       ->getPage()
+       ->find('xpath', "//div[@id='content']/div[2]/div[$index]/div[1]/div[3]/button[1]")
+       ->click();
         
     }
 
@@ -37,7 +40,10 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function cartTotalButton()
     {
-       $this->getSession()->getPage()->find('xpath', "//span[@id='cart-total']")->click();
+       $this->getSession()
+       ->getPage()
+       ->find('xpath', "//span[@id='cart-total']")
+       ->click();
     }
 
     /**
@@ -54,16 +60,23 @@ class AddToCartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function removeItemFromCart()
     {
-       $this->getSession()->getPage()->find('css',".btn-danger")->click();
+       $this->getSession()
+       ->getPage()
+       ->find('css',".btn-danger")
+       ->click();
     }
 
     /** @AfterScenario @addtocart */
     public function after()
     {
-      $elements=$this->getSession()->getPage()->findAll('css',"[title='Remove']");
+      $elements=$this->getSession()
+      ->getPage()
+      ->findAll('css',"[title='Remove']");
       foreach($elements as $value){
-       $value=$this->getSession()->getPage()->find('xpath',"//div[@id='cart']//tr[1]//button")->click();
-
-    }
+       $value=$this->getSession()
+       ->getPage()
+       ->find('xpath',"//div[@id='cart']//tr[1]//button")
+       ->click();
+      }
    }
 }
