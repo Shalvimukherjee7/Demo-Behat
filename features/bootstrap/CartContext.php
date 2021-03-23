@@ -97,11 +97,10 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->getPage()
          ->findAll('css',"[title='Remove']");
       foreach($elements as $value){
-      $value=$this->getSession()
+       $value=$this->getSession()
          ->getPage()
          ->find('xpath',"//div[@id='cart']//tr[1]//button")
          ->click();
-    
-        }
-    }
+      }
+   }
 }
