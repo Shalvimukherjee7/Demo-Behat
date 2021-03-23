@@ -9,11 +9,11 @@ Feature: Add to cart functionality
 
   Scenario: Check count when no item is added to cart
     Given I am on the homepage
-    Then I should see product count "0"  
+    Then I should see total "0" products in cart popup
 
   Scenario: Check cart message no item is added to cart
     Given I am on the homepage
-    When I press cart total button
+    When I open cart popup
     Then  I should see "Your shopping cart is empty!"   
   
   Scenario: Remove product from cart
@@ -21,7 +21,7 @@ Feature: Add to cart functionality
     And I click on add to cart "1"
     When I remove item from cart
     And I wait for AJAX to finish
-    Then I should see product count "0"     
+    Then I should see total "0" products in cart popup   
 
   @addtocart
   Scenario: Add one product to cart and verify popup
@@ -34,13 +34,13 @@ Feature: Add to cart functionality
     Given I am on the homepage
     When I click on add to cart "1"
     And I click on add to cart "2"
-    Then I should see product count "2"
+     Then I should see total "2" products in cart popup
 
   @addtocart
   Scenario: Verify click of view cart button in cart pop
     Given I am on the homepage
     And I click on add to cart "1"
-    When I press cart total button
+    When I open cart popup
     And I click "View Cart"
     Then I should see "What would you like to do next"   
  
@@ -48,7 +48,7 @@ Feature: Add to cart functionality
   Scenario: Verify click of checkout button in cart pop
     Given I am on the homepage
     And I click on add to cart "1"
-    When I press cart total button
+    When I open cart popup
     And I click "Checkout"
     Then I should see "Checkout Options" 
-    Then I should see total "2" products in cart popup
+   

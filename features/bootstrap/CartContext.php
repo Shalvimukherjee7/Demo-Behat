@@ -29,11 +29,7 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     {
        $this->getSession()
          ->getPage()
-<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
-         ->find('xpath', "//div[@id='content']/div[2]/div[$index]/div[1]/div[3]/button[1]")
-=======
          ->find('xpath', "//div[@id='content']//div[$index]/div[1]/div[3]/button[1]")
->>>>>>> add-to-cart:features/bootstrap/CartContext.php
          ->click();
         
     }
@@ -76,20 +72,10 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->getPage()
          ->findAll('css',"[title='Remove']");
       foreach($elements as $value){
-<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
        $value=$this->getSession()
          ->getPage()
          ->find('xpath',"//div[@id='cart']//tr[1]//button")
          ->click();
       }
    }
-=======
-      $value=$this->getSession()
-         ->getPage()
-         ->find('xpath',"//div[@id='cart']//tr[1]//button")
-         ->click();
-    
-        }
-    }
->>>>>>> add-to-cart:features/bootstrap/CartContext.php
 }
