@@ -29,11 +29,7 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     {
        $this->getSession()
          ->getPage()
-<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
-         ->find('xpath', "//div[@id='content']/div[2]/div[$index]/div[1]/div[3]/button[1]")
-=======
          ->find('xpath', "//div[@id='content']//div[$index]/div[1]/div[3]/button[1]")
->>>>>>> add-to-cart:features/bootstrap/CartContext.php
          ->click();
         
     }
@@ -69,6 +65,31 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->click();
     }
 
+    /**
+    * @Given /^I update the quantity of product to "([^"]*)"$/
+    */
+    public function updateQuantityOfProduct($value)
+    {
+       $this->getSession()
+         ->getPage()
+         ->find('css',"[name*='quantity']")
+         ->setValue($value);
+       $this->getSession()
+         ->getPage()
+         ->find('css','.fa-refresh')
+         ->click();
+    }
+    /**
+    * @Given /^I delete the product from cart$/
+    */
+    public function deleteProductFromCart()
+    {
+      $this->getSession()
+         ->getPage()
+         ->find('xpath',"//div[@id='content']//button[contains(@class, 'btn-danger')]")
+         ->click();
+    }
+
     /** @AfterScenario @addtocart */
     public function after()
     {
@@ -76,14 +97,6 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->getPage()
          ->findAll('css',"[title='Remove']");
       foreach($elements as $value){
-<<<<<<< HEAD:features/bootstrap/AddToCartContext.php
-       $value=$this->getSession()
-         ->getPage()
-         ->find('xpath',"//div[@id='cart']//tr[1]//button")
-         ->click();
-      }
-   }
-=======
       $value=$this->getSession()
          ->getPage()
          ->find('xpath',"//div[@id='cart']//tr[1]//button")
@@ -91,5 +104,4 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     
         }
     }
->>>>>>> add-to-cart:features/bootstrap/CartContext.php
 }

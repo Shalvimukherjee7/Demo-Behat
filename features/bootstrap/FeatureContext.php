@@ -46,4 +46,5 @@ class FeatureContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     {
        $this->getSession()->getPage()->find('css', '[data-original-title="Add to Cart"]')->click();
     }
+
 }
