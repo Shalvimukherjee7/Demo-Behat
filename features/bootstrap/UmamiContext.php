@@ -48,21 +48,26 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
    * @Given I select :value from :field from autocomplete
    */
   public function enterTag($value, $field) {
+
+    //Get the input field for tag
     $element=$this
       ->getSession()
       ->getPage()
       ->findField($field);
 
+    //Enter the value of tag  
     $this->getSession()
       ->getPage()
       ->fillField($field, $value);
     
-     $xpath = $element->getXpath();
-     $driver = $this
+    //Get Xpath of the field 
+    $xpath = $element->getXpath();
+    $driver = $this
       ->getSession()
       ->getDriver();
 
-     $driver->keyDown($xpath, 13);
+    //press enter key 
+    $driver->keyDown($xpath, 13);
    
   }
   /**
@@ -70,21 +75,30 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
    */
   public function fillCKEditor($label, PyStringNode $value) {
 
+    //Get text area present in CK Editor
     $element = $this->getSession()
       ->getPage()
       ->find('xpath', "//label[text()='{$label}']//parent::*//textarea");
 
+    //Get id of CK editor instance  
     $ckEditorId = $element->getAttribute('id');
+    
+    //Replace new line
     $value = str_replace("\n", "<br>", $value);
 
+    //Wait for CK editor javascript to load
     $this->getSession()
       ->wait(10000, "typeof CKEDITOR !== 'undefined'");
 
+    //Wait for CK editor instance to load   
     $this->getSession()
       ->wait(10000, "CKEDITOR.instances['{$ckEditorId}'].status === 'ready'");
 
+    //Enter value in CK editor  
     $this->getSession()
       ->executeScript("CKEDITOR.instances['{$ckEditorId}'].setData('{$value}')");
+    
+    //Wait for the value to get reflected in the text area  
     sleep(1);
 
   }
