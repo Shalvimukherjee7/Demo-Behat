@@ -11,6 +11,7 @@ use \PHPUnit\Framework\Assert;
  */
 class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 {
+    public $currenturl = null;
     /**
      * Initializes context.
      *
@@ -112,6 +113,37 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
       ->getPage()
       ->find('xpath', '//div[@class="ui-dialog-buttonset form-actions"]//button[text()="Insert selected"]')
       ->click();
+  }
+
+  /**
+   * @Then /^The current state should be "([^"]*)"$/
+   */
+  public function currentState($state){
+    $this->assertSession()
+     ->elementTextContains('xpath',"//select[@id='edit-moderation-state-0-state']/option[@selected='selected']", $state);
+  }
+
+  /**
+   * @Given /^I logout$/
+   */
+  public function ilogout() {
+    $this->visitPath("/user/logout");
+  }
+
+  /**
+   * @Given /^I get the current url$/
+   */
+  public function getCurrentUrl() {
+    $this->currenturl= $this->getSession()
+     ->getCurrentUrl();
+    $this->visitPath($this->currenturl);
+  }
+
+  /**
+   * @Given /^I visit the page$/
+   */
+  public function visitPage() {
+    $this->visitPath($this->currenturl);
   }
 
 }
