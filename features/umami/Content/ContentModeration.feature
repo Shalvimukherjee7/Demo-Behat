@@ -1,4 +1,4 @@
-@javascript @content @contentworkflow
+@javascript @content @contentworkflow @umami
 Feature: Verify content moderation workflow
 
     Scenario: Verify content moderation workflow on Basic page
