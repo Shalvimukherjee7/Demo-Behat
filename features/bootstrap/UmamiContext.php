@@ -124,4 +124,14 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
       ->executeScript("document.getElementById('edit-keys').value='{$value}'");
   }  
 
+  /**
+   *
+   * @Given /^I perform "([^"]*)" action on the "([^"]*)" menu$/
+   */
+  public function editMenu($action,$menu){
+    $this->getSession()
+      ->getPage()
+      ->find('xpath',"//a[text()='{$menu}']//../..//*[text()='$action']")->click();
+  }
+
 }
