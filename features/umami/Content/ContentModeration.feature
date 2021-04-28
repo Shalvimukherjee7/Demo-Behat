@@ -1,7 +1,7 @@
 @javascript @content @contentworkflow @umami
 Feature: Verify content moderation workflow
 
-    Scenario: Verify content moderation workflow on Basic page
+    Scenario: Verify content moderation workflow on Basic page
         #Draft
         Given I am on the homepage
         When I login as admin
@@ -48,13 +48,13 @@ Feature: Verify content moderation workflow
         And I navigate to saved URL
         Then I should see "You are not authorized to access this page."
 
-Scenario: Verify content moderation state by default on Recipe
+    Scenario: Verify content moderation state by default on Recipe
         Given I am on the homepage
         When I login as admin
         And I visit "/en/node/add/recipe"
         Then The current state should be "Draft"
 
-Scenario: Verify content moderation state by default on Article page
+    Scenario: Verify content moderation state by default on Article page
         Given I am on the homepage
         When I login as admin
         And I visit "/en/node/add/article"
