@@ -114,4 +114,14 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
       ->click();
   }
 
+  /**
+   *
+   * @Given /^I fill in search field with "([^"]*)"$/
+   */
+  public function getSearchField($value)
+  {
+    $this->getSession()
+      ->executeScript("document.getElementById('edit-keys').value='{$value}'");
+  }  
+
 }
