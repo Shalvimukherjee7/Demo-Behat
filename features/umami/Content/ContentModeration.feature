@@ -19,33 +19,33 @@ Feature: Verify content moderation workflow
         Then The current state should be "Draft"
         And I should see "Published"
         And I press "Save"
-        When I get the current url
+        When I save current URL
         And  I logout
-        And I visit the page
+        And I navigate to saved URL
         Then I should see "You are not authorized to access this page."
 
         #Published
         When I login as admin
-        And I visit the page
+        And I navigate to saved URL
         And I click "Edit" in the "content" region
         Then The current state should be "Draft"
         When I select "Published" from "Change to"
         And I press "Save"
-        And I get the current url
+        And I save current URL
         And I logout
-        And I visit the page
+        And I navigate to saved URL
         Then I should see the heading "[Test] Automated Basic Page"
 
         #Archived
         When I login as admin
-        And I visit the page
+        And I navigate to saved URL
         And I click "Edit" in the "content" region
         Then The current state should be "Published"
         When I select "Archived" from "Change to"
         And I press "Save"
-        When I get the current url
+        When I save current URL
         And I logout
-        And I visit the page
+        And I navigate to saved URL
         Then I should see "You are not authorized to access this page."
 
 Scenario: Verify content moderation state by default on Recipe

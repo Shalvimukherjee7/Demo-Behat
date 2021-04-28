@@ -131,7 +131,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
   }
 
   /**
-   * @Given /^I get the current url$/
+   * @Given /^I save current URL$/
    */
   public function getCurrentUrl() {
     $this->currenturl= $this->getSession()
@@ -140,7 +140,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
   }
 
   /**
-   * @Given /^I visit the page$/
+   * @Given /^I navigate to saved URL$/
    */
   public function visitPage() {
     $this->visitPath($this->currenturl);
