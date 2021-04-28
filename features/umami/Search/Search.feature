@@ -23,4 +23,3 @@ Feature: Search functionality
     Then I should see "About searching"
     And I should be on "en/search/node?keys="
     And I should see "Please enter some keywords."
-    
