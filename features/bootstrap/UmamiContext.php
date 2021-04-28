@@ -121,7 +121,8 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
   public function getSearchField($value)
   {
     $this->getSession()
-      ->executeScript("document.getElementById('edit-keys').value='{$value}'");
+     ->getPage()
+     ->find('css','#edit-keys')->setValue("{$value}");
   }  
 
 }
