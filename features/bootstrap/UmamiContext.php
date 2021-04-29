@@ -145,5 +145,15 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
   public function visitPage() {
     $this->visitPath($this->currenturl);
   }
+  
+  /**
+   * @Given /^I fill in search field with "([^"]*)"$/
+   */
+  public function getSearchField($value)
+  {
+    $this->getSession()
+     ->getPage()
+     ->find('css','#edit-keys')->setValue("{$value}");
+  }  
 
 }
