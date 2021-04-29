@@ -11,6 +11,7 @@ use \PHPUnit\Framework\Assert;
  */
 class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 {
+    public $currenturl = null;
     /**
      * Initializes context.
      *
@@ -115,7 +116,37 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
   }
 
   /**
-   *
+   * @Then /^The current state should be "([^"]*)"$/
+   */
+  public function currentState($state){
+    $this->assertSession()
+     ->elementTextContains('xpath',"//select[@id='edit-moderation-state-0-state']/option[@selected='selected']", $state);
+  }
+
+  /**
+   * @Given /^I logout$/
+   */
+  public function ilogout() {
+    $this->visitPath("/user/logout");
+  }
+
+  /**
+   * @Given /^I save current URL$/
+   */
+  public function getCurrentUrl() {
+    $this->currenturl= $this->getSession()
+     ->getCurrentUrl();
+    $this->visitPath($this->currenturl);
+  }
+
+  /**
+   * @Given /^I navigate to saved URL$/
+   */
+  public function visitPage() {
+    $this->visitPath($this->currenturl);
+  }
+  
+  /**
    * @Given /^I fill in search field with "([^"]*)"$/
    */
   public function getSearchField($value)
