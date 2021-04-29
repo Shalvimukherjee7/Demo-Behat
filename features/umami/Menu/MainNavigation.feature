@@ -5,8 +5,7 @@ Feature: Main Navigation menu
    #add
    Given I am on the homepage
    When I login as admin
-   Then I should see "Log out"
-   When I visit "en/admin/structure/menu/manage/main?destination=/en/admin/structure/menu"
+   And I visit "en/admin/structure/menu/manage/main?destination=/en/admin/structure/menu"
    And I click "Add link"
    And I fill in "Menu link title" with "[Test]AutomatedLink"
    And I fill in "Link" with "/en/tags/grow-your-own"
@@ -19,7 +18,7 @@ Feature: Main Navigation menu
 
    #edit
    When I visit "en/admin/structure/menu/manage/main?destination=/en/admin/structure/menu"
-   And I perform "Edit" action on the "[Test]AutomatedLink" menu
+   And I click "Edit" in the "[Test]AutomatedLink" row
    And I fill in "Menu link title" with "[Test]EditedAutomatedLink"
    And I press "Save"
    Then I should see "The menu link has been saved."
@@ -30,7 +29,7 @@ Feature: Main Navigation menu
 
    #delete
    When I visit "en/admin/structure/menu/manage/main?destination=/en/admin/structure/menu"
-   And I perform "Delete" action on the "[Test]EditedAutomatedLink" menu
+   And I click "Delete" in the "[Test]EditedAutomatedLink" row
    Then I should see "This action cannot be undone."
    And I press "Delete"
    Then I should see "The menu link [Test]EditedAutomatedLink has been deleted."

@@ -5,8 +5,7 @@ Feature: Basic page
     #add
     Given I am on the homepage
     When I login as admin
-    Then I should see "Log out"
-    When I visit "/en/node/add/page"
+    And I visit "/en/node/add/page"
     And I fill in "Title" with "[Test] Automated Basic Page"
     
     And I fill in "Body" field with following:

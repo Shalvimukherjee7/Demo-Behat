@@ -5,8 +5,7 @@ Feature: Recipe page
     #add
     Given I am on the homepage
     When I login as admin
-    Then I should see "Log out"
-    When I visit "/en/node/add/recipe"
+    And I visit "/en/node/add/recipe"
     And I fill in "Recipe Name" with "[Test] Automated Recipe"
     And I fill in "Preparation time" with "30"
     And I fill in "Cooking time" with "120"

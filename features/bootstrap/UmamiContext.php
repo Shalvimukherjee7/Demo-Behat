@@ -41,6 +41,9 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
         ->getPage()
         ->findButton("Log in")
         ->click();
+
+      $this->assertSession()
+        ->pageTextContains('Log out');
     }
 
   /**
@@ -123,15 +126,5 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     $this->getSession()
       ->executeScript("document.getElementById('edit-keys').value='{$value}'");
   }  
-
-  /**
-   *
-   * @Given /^I perform "([^"]*)" action on the "([^"]*)" menu$/
-   */
-  public function editMenu($action,$menu){
-    $this->getSession()
-      ->getPage()
-      ->find('xpath',"//a[text()='{$menu}']//../..//*[text()='$action']")->click();
-  }
 
 }
