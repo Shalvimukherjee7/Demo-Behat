@@ -156,4 +156,15 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      ->find('css','#edit-keys')->setValue("{$value}");
   }  
 
+  /**
+   * @Given /^I click on "([^"]*)" view recipe link$/
+   */
+  public function clickViewRecipe($value)
+  {
+    $this->getSession()
+     ->getPage()
+     ->find("xpath", "//h2//*[text()='{$value}']//../..//*[@class='read-more__link']")
+     ->click();
+  }   
+  
 }
