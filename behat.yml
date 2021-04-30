@@ -36,6 +36,7 @@ default:
     Behat\MinkExtension:
       javascript_session: default
       browser_name: chrome
+      files_path: "%paths.base%/Media"
       base_url: http://localhost:8888/
       goutte: ~
       selenium2: ~
@@ -43,3 +44,4 @@ default:
         default:
           chrome:
             api_url: "http://localhost:9222"
+            

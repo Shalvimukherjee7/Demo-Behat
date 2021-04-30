@@ -154,6 +154,82 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
     $this->getSession()
      ->getPage()
      ->find('css','#edit-keys')->setValue("{$value}");
-  }  
+  } 
 
+   /**
+    * Wait for a specified time until an element is found.
+    *
+    * @param $selector -  Selectors like css path, xpath path, label etc.
+    * @param string $type - Type of Mink Selector css, xpath, named etc.
+    * @param int $wait - Max wait time.
+    */
+  public function waitForElement($selector, $type = 'css', $wait = 15) {
+    // Wait until max timeout.
+    while ($wait > 0) {
+      // Check for Element.
+      $element = $this->getSession()->getPage()->find($type, $selector);
+      if (!is_null($element)) {
+        return $element;
+      }
+      else {
+        // Wait for 1 sec and continue.
+        sleep(1);
+        $wait--;
+      }
+    }
+    return false;
+  }
+
+  public function waitForAjaxAndAnimation($wait = 30) {
+    $this->getSession()
+      ->wait($wait, "(jQuery.active === 0)");
+  }
+
+  /**
+   * @Given /^I upload "([^"]*)" image in add media field$/
+   */
+  public function uploadImage($file) {
+
+    //Click on Add media button
+    $this->getSession()
+     ->getPage()
+     ->find('xpath',"//span[text()='Media Image']//../..//input[@id='edit-field-media-image-open-button']")
+     ->click();
+
+    $this->waitForElement('[name="files[upload]"]');
+
+    //Upload the image
+    if ($this->getMinkParameter('files_path')) {
+      $fullPath = rtrim(realpath($this->getMinkParameter('files_path')), DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.$file;
+      if (is_file($fullPath)) {
+          $file = $fullPath;
+        }
+    }
+
+    $this->getSession()
+     ->getPage()
+     ->attachFileToField('files[upload]', $file);
+
+    $this->waitForElement('[name="media[0][fields][name][0][value]"]');
+
+    //Enter Alternative text
+    $this->getSession()
+     ->getPage()
+     ->find('xpath',"//label[text()='Alternative text']//parent::div//input[@name='media[0][fields][field_media_image][0][alt]']")
+     ->setValue('demoimage');
+
+    //Click on Save 
+    $this->getSession()
+      ->getPage()
+      ->find('xpath', "//button[text()='Save']")
+      ->click();
+
+    $this->waitForAjaxAndAnimation();
+
+    //Click on insert selected button
+    $this->waitForElement('//div[@class="ui-dialog-buttonset form-actions"]//button[text()="Insert selected"]', "xpath")
+     ->click();
+
+    $this->waitForAjaxAndAnimation();
+  }
 }
