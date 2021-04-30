@@ -42,6 +42,9 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
         ->getPage()
         ->findButton("Log in")
         ->click();
+
+      $this->assertSession()
+        ->pageTextContains('Log out');
     }
 
   /**
@@ -232,4 +235,15 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 
     $this->waitForAjaxAndAnimation();
   }
+  /**
+   * @Given /^I click on "([^"]*)" view recipe link$/
+   */
+  public function clickViewRecipe($value)
+  {
+    $this->getSession()
+     ->getPage()
+     ->find("xpath", "//h2//*[text()='{$value}']//../..//*[@class='read-more__link']")
+     ->click();
+  }   
+  
 }
