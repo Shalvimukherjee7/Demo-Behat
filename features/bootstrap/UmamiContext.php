@@ -42,6 +42,9 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
         ->getPage()
         ->findButton("Log in")
         ->click();
+
+      $this->assertSession()
+        ->pageTextContains('Log out');
     }
 
   /**
