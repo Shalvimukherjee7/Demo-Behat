@@ -16,11 +16,7 @@ Feature: Article page
     Donec a dui et dui fringilla consectetur id nec Nunc posuere purus rhoncus pulvinar aliquam massa.
     """
     And I select "Baked" from "Tags" from autocomplete
-    And I press "Add media"
-    And I fill in "Name" with "Deep mediterranean quiche"
-    And I press "Apply filters"
-    And I check "Select Deep mediterranean quiche"
-    And I click on insert selected media 
+    And I upload "demoimage.png" image in add media field
     And I select "Published" from "Save as"
     And I press "Save"
     Then I should see "Article [Test] Automated Article page has been created."
