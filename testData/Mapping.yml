@@ -2,58 +2,76 @@
 #es stands for Spanish
 
 #Login credentials
-en.Username: Username
-es.Username: Nombre de usuario
+Username:
+  en: Username
+  es: Nombre de usuario
 
-en.Password: Password
-es.Password: Contraseña
+Password:
+  en: Password
+  es: Contraseña
 
-en.Login: Log in
-es.Login: Iniciar sesión
+Login:
+  en: Log in
+  es: Iniciar sesión
 
-en.Logout: Log out
-es.Logout: Cerrar sesión
+Logout:
+  en: Log out
+  es: Cerrar sesión
 
 #Content fields
-en.Title: Title
-es.Title: Título
+Title: 
+  en: Title
+  es: Título
 
-en.Body: Body
-es.Body: Cuerpo
+Body: 
+  en: Body
+  es: Cuerpo
 
-en.Tags: Tags
-es.Tags: Etiquetas
+Tags: 
+  en: Tags
+  es: Etiquetas
 
-en.Add Media: Add media
-es.Add Media: Añadir contenido multimedia
+Add Media:
+  en: Add media
+  es: Añadir contenido multimedia
 
-en.Published: Published
-es.Published: Publicado
+Published: 
+  en: Published
+  es: Publicado
 
-en.Save as: Save as
-es.Save as: Guardar como
+Save as: 
+  en: Save as
+  es: Guardar como
 
-en.Save: Save
-es.Save: Guardar
+Save: 
+  en: Save
+  es: Guardar
 
 #Updating content
-en.Delete: Delete
-es.Delete: Eliminar
+Delete: 
+  en: Delete
+  es: Eliminar
 
-en.Delete warning: This action cannot be undone.
-es.Delete warning: Esta acción no se puede deshacer.
+Delete warning: 
+  en: This action cannot be undone.
+  es: Esta acción no se puede deshacer.
 
-en.Basic page: Basic page
-es.Basic page: Página básica
+Basic page: 
+  en: Basic page
+  es: Página básica
 
-en.has been created.: has been created.
-es.has been created.: se ha creado.
+has been created.: 
+  en: has been created.
+  es: se ha creado.
 
-en.has been updated.: has been updated.
-es.has been updated.: ha sido actualizado.
+has been updated.: 
+  en: has been updated.
+  es: ha sido actualizado.
 
-en.has been deleted.: has been deleted.
-es.has been deleted.: ha sido eliminado.
+has been deleted.: 
+  en: has been deleted.
+  es: ha sido eliminado.
 
-en.The Basic page: The Basic page
-es.The Basic page: El Página básica
+The Basic page: 
+  en: The Basic page
+  es: El Página básica

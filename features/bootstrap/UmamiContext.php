@@ -14,6 +14,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 {
     public $currenturl = null;
     public $lang = null;
+    public $yml = null;
     /**
      * Initializes context.
      *
@@ -23,6 +24,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      */
     public function __construct($lang)
     {
+      $this->yml = Yaml::parse(file_get_contents('testData/Mapping.yml'));
       $this->lang = $lang;
     }
 
@@ -280,8 +282,8 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 
   //Translates the input into desired language
   public function localize($text){
-    $yml = Yaml::parse(file_get_contents('testData/Mapping.yml'));
-    $label= $yml[$this->lang.$text];
+    $language = $this->lang;
+    $label= $this->yml[$text][$language];
     return $label;
   }
 
