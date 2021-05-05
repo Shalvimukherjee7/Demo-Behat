@@ -2,7 +2,6 @@
 #es stands for Spanish
 
 #Login credentials
-<<<<<<< HEAD
 Username:
   en: Username
   es: Nombre de usuario
@@ -76,60 +75,3 @@ has been deleted.:
 The Basic page: 
   en: The Basic page
   es: El Página básica
-=======
-en.Username: Username
-es.Username: Nombre de usuario
-
-en.Password: Password
-es.Password: Contraseña
-
-en.Login: Log in
-es.Login: Iniciar sesión
-
-en.Logout: Log out
-es.Logout: Cerrar sesión
-
-#Content fields
-en.Title: Title
-es.Title: Título
-
-en.Body: Body
-es.Body: Cuerpo
-
-en.Tags: Tags
-es.Tags: Etiquetas
-
-en.Add Media: Add media
-es.Add Media: Añadir contenido multimedia
-
-en.Published: Published
-es.Published: Publicado
-
-en.Save as: Save as
-es.Save as: Guardar como
-
-en.Save: Save
-es.Save: Guardar
-
-#Updating content
-en.Delete: Delete
-es.Delete: Eliminar
-
-en.Delete warning: This action cannot be undone.
-es.Delete warning: Esta acción no se puede deshacer.
-
-en.Basic page: Basic page
-es.Basic page: Página básica
-
-en.has been created.: has been created.
-es.has been created.: se ha creado.
-
-en.has been updated.: has been updated.
-es.has been updated.: ha sido actualizado.
-
-en.has been deleted.: has been deleted.
-es.has been deleted.: ha sido eliminado.
-
-en.The Basic page: The Basic page
-es.The Basic page: El Página básica
->>>>>>> f31e4304f5d29ea51d95bd7e2d6568b8520168fa
