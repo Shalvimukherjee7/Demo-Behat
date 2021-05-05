@@ -5,8 +5,8 @@ Feature: Basic page
     #add
     Given I am on the homepage
     When I login as admin
-    And I visit "/en/node/add/page"
-    And I fill in "Title" with "[Test] Automated Basic Page"
+    And I visit "node/add/page"
+    And I fill in "Title" with "[Test] Automated Basic Page" text
     
     And I fill in "Body" field with following:
     """
@@ -15,28 +15,28 @@ Feature: Basic page
     Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis.
     Donec a dui et dui fringilla consectetur id nec Nunc posuere purus rhoncus pulvinar aliquam massa.
     """
-    And I select "Published" from "Save as"
-    And I press "Save"
-    Then I should see "Basic page [Test] Automated Basic Page has been created."
-    And I should see the heading "[Test] Automated Basic Page"
+    And I select "Published" from dropdown
+    And I press "Save" button
+    Then I should see following message "Basic page" "[Test] Automated Basic Page" "has been created."
+    Then I should see the heading "[Test] Automated Basic Page"
     And I should see "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 
     #edit
     When I click "Edit" in the "content" region
-    And I fill in "Title" with "[Test] Edit Automated Basic Page"
+    And I fill in "Title" with "[Test] Edit Automated Basic Page" text
     And I fill in "Body" field with following:
     """
     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam.
     Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis.
     """
-    And I press "Save"
-    Then I should see "Basic page [Test] Edit Automated Basic Page has been updated."
-    And I should see the heading "[Test] Edit Automated Basic Page"
+    And I press "Save" button
+    Then I should see following message "Basic page" "[Test] Edit Automated Basic Page" "has been updated."
+    Then I should see the heading "[Test] Edit Automated Basic Page"
     And I should see "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 
     #delete
-    When I click "Delete" in the "content" region
-    Then I should see "This action cannot be undone."
-    And I press "Delete"
-    Then I should see "The Basic page [Test] Edit Automated Basic Page has been deleted."
+    When I click on "Delete" link on region tab
+    Then I should see "Delete warning" message
+    And I press "Delete" button
+    Then I should see following message "The Basic page" "[Test] Edit Automated Basic Page" "has been deleted."

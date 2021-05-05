@@ -5,6 +5,7 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Selector\CssSelector;
 use \PHPUnit\Framework\Assert;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Defines application features from the specific context.
@@ -12,6 +13,8 @@ use \PHPUnit\Framework\Assert;
 class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
 {
     public $currenturl = null;
+    public $lang = null;
+    public $yml = null;
     /**
      * Initializes context.
      *
@@ -19,32 +22,39 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    public function __construct()
+    public function __construct($lang)
     {
+      $this->yml = Yaml::parse(file_get_contents('testData/Mapping.yml'));
+      $this->lang = $lang;
     }
 
     /**
      * @Given /^I login as admin$/
      */
     public function ilogin() {
+      $userName = $this->localize("Username");
+      $password = $this->localize("Password");
+      $login = $this->localize("Login");
+      $logout = $this->localize("Logout");
+
       $this->visitPath("user/login");
       $this->getSession()
         ->getPage()
-        ->findField("Username")
+        ->findField($userName)
         ->setValue("admin"); 
 
       $this->getSession()
         ->getPage()
-        ->findField("Password")
+        ->findField($password)
         ->setValue("admin"); 
 
       $this->getSession()
         ->getPage()
-        ->findButton("Log in")
+        ->findButton($login)
         ->click();
 
       $this->assertSession()
-        ->pageTextContains('Log out');
+        ->pageTextContains($logout);
     }
 
   /**
@@ -52,6 +62,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
    * @Given I select :value from :field from autocomplete
    */
   public function enterTag($value, $field) {
+    $field = $this->localize($field);
 
     //Get the input field for tag
     $element=$this
@@ -78,6 +89,7 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
    * @Given /^I fill in "([^"]*)" field with following:$/
    */
   public function fillCKEditor($label, PyStringNode $value) {
+    $label = $this->localize($label);
 
     //Get text area present in CK Editor
     $element = $this->getSession()
@@ -245,5 +257,75 @@ class UmamiContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
      ->find("xpath", "//h2//*[text()='{$value}']//../..//*[@class='read-more__link']")
      ->click();
   }   
-  
+ 
+  /**
+   * @Given /^I fill in "([^"]*)" with "([^"]*)" text$/
+   */
+  public function fillField($label, $value){
+    $label = $this->localize($label);
+    $this->getSession()
+      ->getPage()
+      ->findField($label)
+      ->setValue($value);
+  }
+
+  /**
+   * @Given /^I press "([^"]*)" button$/
+   */
+  public function iPressButton($label){
+    $label = $this->localize($label);
+    $this->getSession()
+      ->getPage()
+      ->findButton($label)
+      ->click();
+  }
+
+  //Translates the input into desired language
+  public function localize($text){
+    $language = $this->lang;
+    $label= $this->yml[$text][$language];
+    return $label;
+  }
+
+  /**
+   * @When /^I select "([^"]*)" from dropdown$/
+   */
+  public function selectOption($option){
+    $option = $this->localize($option);
+    $this->getSession()
+      ->getPage()
+      ->find('xpath', "//select[@id='edit-moderation-state-0-state']/option[text()='$option']")
+      ->click();
+  }
+
+  /**
+   * @Then /^I should see "([^"]*)" message$/
+   */
+  public function deleteWarningMessage($text){
+    $text = $this->localize($text);
+    $this->assertSession()
+      ->elementContains('css','#node-page-delete-form',$text);
+  }
+
+  /**
+   * @When /^I click on "([^"]*)" link on region tab$/
+   */
+  public function clickOnLink($link){
+    $link = $this->localize($link);
+    $this->getSession()
+      ->getPage()
+      ->find('xpath', "//div[@class='region region-tabs']//*[text()='{$link}']")
+      ->click();
+  }
+
+  /**
+    * @Then I should see following message :prefix :text :suffix
+    */
+  public function updateMessage($prefix, $text, $suffix){
+    $prefix = $this->localize($prefix);
+    $suffix = $this->localize($suffix);
+    $this->assertSession()
+      ->pageTextContains($prefix." ".$text." ".$suffix);
+  }
+
 }

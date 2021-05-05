@@ -1,0 +1,77 @@
+#en stands for English
+#es stands for Spanish
+
+#Login credentials
+Username:
+  en: Username
+  es: Nombre de usuario
+
+Password:
+  en: Password
+  es: Contraseña
+
+Login:
+  en: Log in
+  es: Iniciar sesión
+
+Logout:
+  en: Log out
+  es: Cerrar sesión
+
+#Content fields
+Title: 
+  en: Title
+  es: Título
+
+Body: 
+  en: Body
+  es: Cuerpo
+
+Tags: 
+  en: Tags
+  es: Etiquetas
+
+Add Media:
+  en: Add media
+  es: Añadir contenido multimedia
+
+Published: 
+  en: Published
+  es: Publicado
+
+Save as: 
+  en: Save as
+  es: Guardar como
+
+Save: 
+  en: Save
+  es: Guardar
+
+#Updating content
+Delete: 
+  en: Delete
+  es: Eliminar
+
+Delete warning: 
+  en: This action cannot be undone.
+  es: Esta acción no se puede deshacer.
+
+Basic page: 
+  en: Basic page
+  es: Página básica
+
+has been created.: 
+  en: has been created.
+  es: se ha creado.
+
+has been updated.: 
+  en: has been updated.
+  es: ha sido actualizado.
+
+has been deleted.: 
+  en: has been deleted.
+  es: ha sido eliminado.
+
+The Basic page: 
+  en: The Basic page
+  es: El Página básica

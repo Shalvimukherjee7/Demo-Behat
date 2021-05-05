@@ -2,7 +2,8 @@ default:
   suites:
     default:
       contexts:
-        - UmamiContext
+        - UmamiContext:
+          - en  
         - FeatureContext
         - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\MinkContext
@@ -38,6 +39,47 @@ default:
       browser_name: chrome
       files_path: "%paths.base%/Media"
       base_url: http://localhost:8888/
+      goutte: ~
+      selenium2: ~
+      sessions:
+        default:
+          chrome:
+            api_url: "http://localhost:9222"
+
+translated:
+  suites:
+    default:
+      contexts:
+        - UmamiContext:
+          - es
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - emuse\BehatHTMLFormatter\Context\ScreenshotContext:
+            screenshotDir: report/html/behat/assets/screenshots
+  extensions:
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      name: html
+      renderer: Twig,Behat2
+      file_name: index
+      print_args: true
+      print_outp: true
+      loop_break: true
+    Bex\Behat\ScreenshotExtension: ~
+    DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
+    Drupal\DrupalExtension:
+      blackbox: ~
+      region_map:
+        header: 'header'
+        footer: 'footer'
+        content: 'main' 
+    Behat\MinkExtension:
+      javascript_session: default
+      browser_name: chrome
+      files_path: "%paths.base%/Media"
+      base_url: http://localhost:8888/es/
       goutte: ~
       selenium2: ~
       sessions:
