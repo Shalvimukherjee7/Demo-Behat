@@ -34,7 +34,7 @@ Feature: Add to cart functionality
     Given I am on the homepage
     When I click on add to cart "1"
     And I click on add to cart "2"
-     Then I should see total "2" products in cart popup
+    Then I should see total "2" products in cart popup
 
   @addtocart
   Scenario: Verify click of view cart button in cart pop
@@ -51,4 +51,4 @@ Feature: Add to cart functionality
     When I open cart popup
     And I click "Checkout"
     Then I should see "Checkout Options" 
-   
+    

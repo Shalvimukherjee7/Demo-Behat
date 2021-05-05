@@ -65,6 +65,31 @@ class CartContext extends \Drupal\DrupalExtension\Context\RawDrupalContext
          ->click();
     }
 
+    /**
+    * @Given /^I update the quantity of product to "([^"]*)"$/
+    */
+    public function updateQuantityOfProduct($value)
+    {
+       $this->getSession()
+         ->getPage()
+         ->find('css',"[name*='quantity']")
+         ->setValue($value);
+       $this->getSession()
+         ->getPage()
+         ->find('css','.fa-refresh')
+         ->click();
+    }
+    /**
+    * @Given /^I delete the product from cart$/
+    */
+    public function deleteProductFromCart()
+    {
+      $this->getSession()
+         ->getPage()
+         ->find('xpath',"//div[@id='content']//button[contains(@class, 'btn-danger')]")
+         ->click();
+    }
+
     /** @AfterScenario @addtocart */
     public function after()
     {
